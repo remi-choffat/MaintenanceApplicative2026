@@ -176,4 +176,24 @@ class GildedRoseTest {
 		assertEquals(-1, app.items()[0].sellIn);
 		assertEquals(50, app.items()[0].quality);
 	}
+
+	@Test
+	@DisplayName("Conjured item")
+	void testConjuredItem() {
+		Item[] items = new Item[]{new Item("Conjured Mana Cake", 10, 20)};
+		GildedRose app = new GildedRose(items);
+		app.updateQuality();
+		assertEquals(9, app.items()[0].sellIn);
+		assertEquals(18, app.items()[0].quality);
+	}
+
+	@Test
+	@DisplayName("Conjured item sellIn < 0")
+	void testConjuredItemAfterSellDate() {
+		Item[] items = new Item[]{new Item("Conjured Mana Cake", 0, 20)};
+		GildedRose app = new GildedRose(items);
+		app.updateQuality();
+		assertEquals(-1, app.items()[0].sellIn);
+		assertEquals(16, app.items()[0].quality);
+	}
 }
