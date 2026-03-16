@@ -1,15 +1,13 @@
-
 package trivia;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Random;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameTest {
 	@Test
@@ -46,7 +44,7 @@ public class GameTest {
 			aGame.add("Pat");
 			aGame.add("Sue");
 
-			boolean notAWinner = false;
+			boolean notAWinner;
 			do {
 				aGame.roll(rand.nextInt(5) + 1);
 
@@ -61,6 +59,6 @@ public class GameTest {
 			System.setOut(old);
 		}
 
-		return new String(baos.toByteArray());
+		return baos.toString();
 	}
 }
