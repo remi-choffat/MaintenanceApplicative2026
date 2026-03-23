@@ -14,6 +14,7 @@ class EventTest {
 	@DisplayName("Test de la méthode description() pour un RDV personnel")
 	void testDescriptionRdvPersonnel() {
 		Event rdv = new RdvPersonnel(
+				new EventId("EVT-001"),
 				new TitreEvenement("Dentiste"),
 				new Utilisateur("Alice"),
 				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 0)),
@@ -27,6 +28,7 @@ class EventTest {
 	@DisplayName("Test de la méthode description() pour une réunion")
 	void testDescriptionReunion() {
 		Event reunion = new Reunion(
+				new EventId("EVT-001"),
 				new TitreEvenement("Point Projet"),
 				new Utilisateur("Bob"),
 				new DateDebut(LocalDateTime.of(2026, 3, 25, 14, 0)),
@@ -45,6 +47,7 @@ class EventTest {
 	@DisplayName("Test de la méthode description() pour un événement périodique")
 	void testDescriptionPeriodique() {
 		Event periodique = new EvenementPeriodique(
+				new EventId("EVT-001"),
 				new TitreEvenement("Sport"),
 				new Utilisateur("Charlie"),
 				new DateDebut(LocalDateTime.of(2026, 3, 26, 18, 0)),

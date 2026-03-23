@@ -16,11 +16,13 @@ class CalendarManagerTest {
 
 		// Rdv 1 : 10h00 - 11h00
 		Event rdv1 = new RdvPersonnel(
+				new EventId("EVT-001"),
 				new TitreEvenement("Réunion A"), new Utilisateur("Alice"),
 				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 0)), new DureeEvenement(60));
 
 		// Rdv 2 : 10h30 - 11h30
 		Event rdv2 = new RdvPersonnel(
+				new EventId("EVT-002"),
 				new TitreEvenement("Réunion B"), new Utilisateur("Bob"),
 				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 30)), new DureeEvenement(60));
 

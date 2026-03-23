@@ -11,13 +11,13 @@ public class CalendarManager {
 		this.events = new ArrayList<>();
 	}
 
-	public void ajouterEvent(String type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes,
+	public void ajouterEvent(EventId id, String type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes,
 	                         LieuEvenement lieu, ParticipantsReunion participants, FrequenceEvenement frequenceJours) {
 		switch (type) {
-			case "RDV_PERSONNEL" -> events.add(new RdvPersonnel(title, proprietaire, dateDebut, dureeMinutes));
-			case "REUNION" -> events.add(new Reunion(title, proprietaire, dateDebut, dureeMinutes, lieu, participants));
+			case "RDV_PERSONNEL" -> events.add(new RdvPersonnel(id, title, proprietaire, dateDebut, dureeMinutes));
+			case "REUNION" -> events.add(new Reunion(id, title, proprietaire, dateDebut, dureeMinutes, lieu, participants));
 			case "PERIODIQUE" ->
-					events.add(new EvenementPeriodique(title, proprietaire, dateDebut, dureeMinutes, frequenceJours));
+					events.add(new EvenementPeriodique(id, title, proprietaire, dateDebut, dureeMinutes, frequenceJours));
 		}
 	}
 
@@ -39,5 +39,9 @@ public class CalendarManager {
 		for (Event e : events) {
 			System.out.println(e.description());
 		}
+	}
+
+	public void supprimerEvent(EventId id) {
+		events.removeIf(e -> e.id.equals(id));
 	}
 }

@@ -3,8 +3,8 @@ package mycalendar;
 import java.time.LocalDateTime;
 
 public class RdvPersonnel extends Event {
-	public RdvPersonnel(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes) {
-		super(title, proprietaire, dateDebut, dureeMinutes);
+	public RdvPersonnel(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes) {
+		super(id, title, proprietaire, dateDebut, dureeMinutes);
 	}
 
 	@Override

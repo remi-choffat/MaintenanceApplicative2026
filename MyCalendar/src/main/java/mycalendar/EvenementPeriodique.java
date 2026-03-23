@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 public class EvenementPeriodique extends Event {
 	public FrequenceEvenement frequence;
 
-	public EvenementPeriodique(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, FrequenceEvenement frequence) {
-		super(title, proprietaire, dateDebut, dureeMinutes);
+	public EvenementPeriodique(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, FrequenceEvenement frequence) {
+		super(id, title, proprietaire, dateDebut, dureeMinutes);
 		this.frequence = frequence;
 	}
 
