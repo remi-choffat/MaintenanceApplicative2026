@@ -6,13 +6,13 @@ public abstract class Event {
 	public TitreEvenement title;
 	public Utilisateur proprietaire;
 	public LocalDateTime dateDebut;
-	public int dureeMinutes;
+	public DureeEvenement duree;
 
-	public Event(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, int dureeMinutes) {
+	public Event(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, DureeEvenement duree) {
 		this.title = title;
 		this.proprietaire = proprietaire;
 		this.dateDebut = dateDebut;
-		this.dureeMinutes = dureeMinutes;
+		this.duree = duree;
 	}
 
 	public abstract String description();

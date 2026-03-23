@@ -3,7 +3,7 @@ package mycalendar;
 import java.time.LocalDateTime;
 
 public class RdvPersonnel extends Event {
-	public RdvPersonnel(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, int dureeMinutes) {
+	public RdvPersonnel(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, DureeEvenement dureeMinutes) {
 		super(title, proprietaire, dateDebut, dureeMinutes);
 	}
 

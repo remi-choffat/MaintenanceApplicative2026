@@ -174,7 +174,7 @@ public class Main {
                         System.out.print("Minute début (0-59) : ");
                         int minute = Integer.parseInt(scanner.nextLine());
                         System.out.print("Durée (en minutes) : ");
-                        int duree = Integer.parseInt(scanner.nextLine());
+                        DureeEvenement duree = new DureeEvenement(Integer.parseInt(scanner.nextLine()));
 
                         calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
                                 LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree,
@@ -198,7 +198,7 @@ public class Main {
                         System.out.print("Minute début (0-59) : ");
                         int minute2 = Integer.parseInt(scanner.nextLine());
                         System.out.print("Durée (en minutes) : ");
-                        int duree2 = Integer.parseInt(scanner.nextLine());
+                        DureeEvenement duree2 = new DureeEvenement(Integer.parseInt(scanner.nextLine()));
                         System.out.println("Lieu :");
                         String lieu = scanner.nextLine();
                         
@@ -237,7 +237,7 @@ public class Main {
                         int frequence = Integer.parseInt(scanner.nextLine());
 
                         calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur,
-                                LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0,
+                                LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), DureeEvenement.EMPTY,
                                 "", "", frequence);
 
                         System.out.println("Événement ajouté.");
