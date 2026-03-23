@@ -26,4 +26,21 @@ class CalendarManagerTest {
 
 		assertTrue(manager.conflit(rdv1, rdv2), "Un conflit devrait être détecté");
 	}
+
+	@Test
+	@DisplayName("Test de suppression d'un événement par son ID")
+	void testSuppressionEvenementParId() {
+		CalendarManager manager = new CalendarManager();
+		EventId id = new EventId("EVT-001");
+		Event rdv = new RdvPersonnel(
+				id,
+				new TitreEvenement("Réunion Test"),
+				new Utilisateur("Alice"),
+				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 0)),
+				new DureeEvenement(60)
+		);
+		manager.events.add(rdv);
+		manager.supprimerEvent(id);
+		assertEquals(0, manager.events.size(), "L'événement devrait avoir été supprimé");
+	}
 }
