@@ -30,7 +30,7 @@ class EventTest {
 				new Utilisateur("Bob"),
 				new DateDebut(LocalDateTime.of(2026, 3, 25, 14, 0)),
 				new DureeEvenement(60),
-				"Salle A",
+				new LieuEvenement("Salle A"),
 				"Alice, Charlie"
 		);
 
