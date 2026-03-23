@@ -15,8 +15,8 @@ public class Main {
         Utilisateur utilisateur = null;
         boolean continuer = true;
 
-        Utilisateur utilisateurs[] = new Utilisateur[99];
-        String motsDePasses[] = new String[99];
+        Utilisateur[] utilisateurs = new Utilisateur[99];
+        String[] motsDePasses = new String[99];
         int nbUtilisateurs = 0;
 
         while (true) {

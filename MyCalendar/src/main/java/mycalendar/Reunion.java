@@ -1,7 +1,5 @@
 package mycalendar;
 
-import java.time.LocalDateTime;
-
 public class Reunion extends Event {
 	public LieuEvenement lieu;
 	public ParticipantsReunion participants;

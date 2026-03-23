@@ -3,7 +3,7 @@ package mycalendar;
 import java.time.LocalDateTime;
 
 public abstract class Event {
-	public EventId id;
+	public final EventId id;
 	public TitreEvenement title;
 	public Utilisateur proprietaire;
 	public DateDebut dateDebut;

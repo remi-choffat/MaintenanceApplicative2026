@@ -1,9 +1,7 @@
 package mycalendar;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CalendarManager {
 	public List<Event> events;

@@ -1,7 +1,5 @@
 package mycalendar;
 
-import java.time.LocalDateTime;
-
 public class RdvPersonnel extends Event {
 	public RdvPersonnel(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes) {
 		super(id, title, proprietaire, dateDebut, dureeMinutes);
