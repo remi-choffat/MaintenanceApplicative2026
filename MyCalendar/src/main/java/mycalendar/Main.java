@@ -178,7 +178,7 @@ public class Main {
 
                         calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
                                 new DateDebut(LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute)), duree,
-                                LieuEvenement.NON_RENSEIGNE, "", new FrequenceEvenement(0));
+                                LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, new FrequenceEvenement(0));
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -201,15 +201,16 @@ public class Main {
                         DureeEvenement duree2 = new DureeEvenement(Integer.parseInt(scanner.nextLine()));
                         System.out.println("Lieu :");
                         LieuEvenement lieu = new LieuEvenement(scanner.nextLine());
-                        
-                        String participants = utilisateur.toString();
+
+                        ParticipantsReunion participants = new ParticipantsReunion(List.of(utilisateur));
                         
                         boolean encore = true;
                         System.out.println("Ajouter un participant ? (oui / non)");
                         while (scanner.nextLine().equals("oui"))
                         {
                             System.out.print("Participants : " + participants);
-                            participants += ", " + scanner.nextLine();
+                            participants.ajouterParticipant(new Utilisateur(scanner.nextLine()));
+                            System.out.println("Ajouter un participant ? (oui / non)");
                         }
 
                         calendar.ajouterEvent("REUNION", titre2, utilisateur,
@@ -238,7 +239,7 @@ public class Main {
 
                         calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur,
                                 new DateDebut(LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3)), DureeEvenement.EMPTY,
-                                LieuEvenement.NON_RENSEIGNE, "", frequence);
+                                LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, frequence);
 
                         System.out.println("Événement ajouté.");
                         break;
