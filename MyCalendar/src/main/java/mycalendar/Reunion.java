@@ -21,4 +21,10 @@ public class Reunion extends Event {
 	public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
 		return !dateDebut.valeur().isBefore(debut) && !dateDebut.valeur().isAfter(fin);
 	}
+
+	@Override
+	public boolean estEnConflitAvec(Event autre) {
+		return this.dateDebut.valeur().isBefore(autre.calculerFin()) &&
+				autre.dateDebut.valeur().isBefore(this.calculerFin());
+	}
 }

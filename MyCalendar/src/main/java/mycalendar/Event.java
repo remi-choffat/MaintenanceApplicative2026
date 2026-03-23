@@ -15,7 +15,13 @@ public abstract class Event {
 		this.duree = duree;
 	}
 
+	public LocalDateTime calculerFin() {
+		return dateDebut.valeur().plusMinutes(duree.minutes());
+	}
+
 	public abstract String description();
 
 	public abstract boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin);
+
+	public abstract boolean estEnConflitAvec(Event autre);
 }
