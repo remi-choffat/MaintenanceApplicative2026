@@ -45,7 +45,7 @@ class EventTest {
 				new Utilisateur("Charlie"),
 				new DateDebut(LocalDateTime.of(2026, 3, 26, 18, 0)),
 				new DureeEvenement(60),
-				7
+				new FrequenceEvenement(7)
 		);
 
 		assertEquals("Événement périodique : Sport tous les 7 jours", periodique.description());
