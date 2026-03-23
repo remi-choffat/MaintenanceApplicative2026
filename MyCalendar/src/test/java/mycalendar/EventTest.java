@@ -15,7 +15,7 @@ class EventTest {
 		Event rdv = new RdvPersonnel(
 				new TitreEvenement("Dentiste"),
 				new Utilisateur("Alice"),
-				LocalDateTime.of(2026, 3, 24, 10, 0),
+				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 0)),
 				new DureeEvenement(30)
 		);
 
@@ -28,7 +28,7 @@ class EventTest {
 		Event reunion = new Reunion(
 				new TitreEvenement("Point Projet"),
 				new Utilisateur("Bob"),
-				LocalDateTime.of(2026, 3, 25, 14, 0),
+				new DateDebut(LocalDateTime.of(2026, 3, 25, 14, 0)),
 				new DureeEvenement(60),
 				"Salle A",
 				"Alice, Charlie"
@@ -43,7 +43,7 @@ class EventTest {
 		Event periodique = new EvenementPeriodique(
 				new TitreEvenement("Sport"),
 				new Utilisateur("Charlie"),
-				LocalDateTime.of(2026, 3, 26, 18, 0),
+				new DateDebut(LocalDateTime.of(2026, 3, 26, 18, 0)),
 				new DureeEvenement(60),
 				7
 		);
