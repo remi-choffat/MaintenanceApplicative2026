@@ -11,8 +11,10 @@ public class CalendarManager {
 		this.events = new ArrayList<>();
 	}
 
-	public void ajouterEvent(EventId id, String type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes,
+	public void ajouterEvent(String type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes,
 	                         LieuEvenement lieu, ParticipantsReunion participants, FrequenceEvenement frequenceJours) {
+		// Génération automatique de l'ID métier
+		EventId id = EventId.generer();
 		switch (type) {
 			case "RDV_PERSONNEL" -> events.add(new RdvPersonnel(id, title, proprietaire, dateDebut, dureeMinutes));
 			case "REUNION" -> events.add(new Reunion(id, title, proprietaire, dateDebut, dureeMinutes, lieu, participants));

@@ -51,11 +51,13 @@ class CalendarManagerTest {
 	void testGenerationAutomatiqueIdUnique() {
 		CalendarManager manager = new CalendarManager();
 
-		// On ajoute deux événements sans préciser d'ID
-		manager.ajouterEvent("RDV_PERSONNEL", "Rdv 1", "Alice",
-				LocalDateTime.of(2026, 3, 24, 10, 0), 30, "", "", 0);
-		manager.ajouterEvent("RDV_PERSONNEL", "Rdv 2", "Alice",
-				LocalDateTime.of(2026, 3, 24, 11, 0), 30, "", "", 0);
+		manager.ajouterEvent("RDV_PERSONNEL", new TitreEvenement("Réunion A"), new Utilisateur("Alice"),
+				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 0)), new DureeEvenement(60),
+				LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, new FrequenceEvenement(0));
+
+		manager.ajouterEvent("RDV_PERSONNEL", new TitreEvenement("Réunion B"), new Utilisateur("Bob"),
+				new DateDebut(LocalDateTime.of(2026, 3, 24, 11, 0)), new DureeEvenement(60),
+				LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, new FrequenceEvenement(0));
 
 		Event e1 = manager.events.get(0);
 		Event e2 = manager.events.get(1);
