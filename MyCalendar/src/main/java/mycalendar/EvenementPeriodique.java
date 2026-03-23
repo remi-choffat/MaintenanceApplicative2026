@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class EvenementPeriodique extends Event {
 	public int frequenceJours;
 
-	public EvenementPeriodique(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, DureeEvenement dureeMinutes, int frequenceJours) {
+	public EvenementPeriodique(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, int frequenceJours) {
 		super(title, proprietaire, dateDebut, dureeMinutes);
 		this.frequenceJours = frequenceJours;
 	}
@@ -17,7 +17,7 @@ public class EvenementPeriodique extends Event {
 
 	@Override
 	public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-		LocalDateTime temp = dateDebut;
+		LocalDateTime temp = dateDebut.valeur();
 		while (temp.isBefore(fin)) {
 			if (!temp.isBefore(debut)) {
 				return true;

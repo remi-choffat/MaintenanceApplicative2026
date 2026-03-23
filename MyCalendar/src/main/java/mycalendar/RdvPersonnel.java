@@ -3,7 +3,7 @@ package mycalendar;
 import java.time.LocalDateTime;
 
 public class RdvPersonnel extends Event {
-	public RdvPersonnel(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, DureeEvenement dureeMinutes) {
+	public RdvPersonnel(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes) {
 		super(title, proprietaire, dateDebut, dureeMinutes);
 	}
 
@@ -14,6 +14,6 @@ public class RdvPersonnel extends Event {
 
 	@Override
 	public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-		return !dateDebut.isBefore(debut) && !dateDebut.isAfter(fin);
+		return !dateDebut.valeur().isBefore(debut) && !dateDebut.valeur().isAfter(fin);
 	}
 }

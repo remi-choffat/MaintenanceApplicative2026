@@ -11,7 +11,7 @@ public class CalendarManager {
 		this.events = new ArrayList<>();
 	}
 
-	public void ajouterEvent(String type, TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, DureeEvenement dureeMinutes,
+	public void ajouterEvent(String type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes,
 	                         String lieu, String participants, int frequenceJours) {
 		switch (type) {
 			case "RDV_PERSONNEL" -> events.add(new RdvPersonnel(title, proprietaire, dateDebut, dureeMinutes));
@@ -32,14 +32,14 @@ public class CalendarManager {
 	}
 
 	public boolean conflit(Event e1, Event e2) {
-		LocalDateTime fin1 = e1.dateDebut.plusMinutes(e1.duree.minutes());
-		LocalDateTime fin2 = e2.dateDebut.plusMinutes(e2.duree.minutes());
+		LocalDateTime fin1 = e1.dateDebut.valeur().plusMinutes(e1.duree.minutes());
+		LocalDateTime fin2 = e2.dateDebut.valeur().plusMinutes(e2.duree.minutes());
 
 		if (e1 instanceof EvenementPeriodique || e2 instanceof EvenementPeriodique) {
 			return false; // Simplification abusive
 		}
 
-		if (e1.dateDebut.isBefore(fin2) && fin1.isAfter(e2.dateDebut)) {
+		if (e1.dateDebut.valeur().isBefore(fin2) && fin1.isAfter(e2.dateDebut.valeur())) {
 			return true;
 		}
 		return false;

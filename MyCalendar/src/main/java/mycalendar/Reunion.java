@@ -6,7 +6,7 @@ public class Reunion extends Event {
 	public String lieu;
 	public String participants;
 
-	public Reunion(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, DureeEvenement dureeMinutes, String lieu, String participants) {
+	public Reunion(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, String lieu, String participants) {
 		super(title, proprietaire, dateDebut, dureeMinutes);
 		this.lieu = lieu;
 		this.participants = participants;
@@ -19,6 +19,6 @@ public class Reunion extends Event {
 
 	@Override
 	public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-		return !dateDebut.isBefore(debut) && !dateDebut.isAfter(fin);
+		return !dateDebut.valeur().isBefore(debut) && !dateDebut.valeur().isAfter(fin);
 	}
 }
