@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static mycalendar.EventType.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -66,5 +67,23 @@ class CalendarManagerTest {
 		assertNotNull(e1.id);
 		assertNotNull(e2.id);
 		assertNotEquals(e1.id, e2.id, "Chaque événement doit avoir un ID unique");
+	}
+
+	@Test
+	@DisplayName("Test de recherche d'événements dans une période donnée")
+	void testRechercheDansPeriode() {
+		CalendarManager manager = new CalendarManager();
+		manager.ajouterEvent(EventType.RDV_PERSONNEL, new TitreEvenement("Test"), new Utilisateur("Alice"),
+				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 0)), new DureeEvenement(30),
+				null, null, null);
+
+		Periode periodeRecherche = new Periode(
+				LocalDateTime.of(2026, 3, 24, 0, 0),
+				LocalDateTime.of(2026, 3, 24, 23, 59)
+		);
+
+		List<Event> resultats = manager.eventsDansPeriode(periodeRecherche);
+
+		assertEquals(1, resultats.size(), "L'événement devrait être trouvé dans la période");
 	}
 }
