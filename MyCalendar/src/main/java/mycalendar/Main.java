@@ -10,10 +10,10 @@ public class Main {
     public static void main(String[] args) {
         CalendarManager calendar = new CalendarManager();
         Scanner scanner = new Scanner(System.in);
-        String utilisateur = null;
+        Utilisateur utilisateur = null;
         boolean continuer = true;
 
-        String utilisateurs[] = new String[99];
+        Utilisateur utilisateurs[] = new Utilisateur[99];
         String motsDePasses[] = new String[99];
         int nbUtilisateurs = 0;
 
@@ -42,7 +42,7 @@ public class Main {
                 switch (scanner.nextLine()) {
                     case "1":
                         System.out.print("Nom d'utilisateur: ");
-                        utilisateur = scanner.nextLine();
+                        utilisateur = new Utilisateur(scanner.nextLine());
 
                         if (utilisateur.equals("Roger")) {
                             String motDePasse = scanner.nextLine();
@@ -70,7 +70,7 @@ public class Main {
 
                     case "2":
                         System.out.print("Nom d'utilisateur: ");
-                        utilisateur = scanner.nextLine();
+                        utilisateur = new Utilisateur(scanner.nextLine());
                         System.out.print("Mot de passe: ");
                         String motDePasse = scanner.nextLine();
                         System.out.print("Répéter mot de passe: ");
@@ -202,7 +202,7 @@ public class Main {
                         System.out.println("Lieu :");
                         String lieu = scanner.nextLine();
                         
-                        String participants = utilisateur;
+                        String participants = utilisateur.toString();
                         
                         boolean encore = true;
                         System.out.println("Ajouter un participant ? (oui / non)");

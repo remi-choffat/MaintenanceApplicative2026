@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 
 public abstract class Event {
 	public TitreEvenement title;
-	public String proprietaire;
+	public Utilisateur proprietaire;
 	public LocalDateTime dateDebut;
 	public int dureeMinutes;
 
-	public Event(TitreEvenement title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes) {
+	public Event(TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, int dureeMinutes) {
 		this.title = title;
 		this.proprietaire = proprietaire;
 		this.dateDebut = dateDebut;

@@ -14,7 +14,7 @@ class EventTest {
 	void testDescriptionRdvPersonnel() {
 		Event rdv = new RdvPersonnel(
 				new TitreEvenement("Dentiste"),
-				new ProprietaireEvenement("Alice"),
+				new Utilisateur("Alice"),
 				LocalDateTime.of(2026, 3, 24, 10, 0),
 				30
 		);
@@ -27,7 +27,7 @@ class EventTest {
 	void testDescriptionReunion() {
 		Event reunion = new Reunion(
 				new TitreEvenement("Point Projet"),
-				new ProprietaireEvenement("Bob"),
+				new Utilisateur("Bob"),
 				LocalDateTime.of(2026, 3, 25, 14, 0),
 				60,
 				"Salle A",
@@ -42,7 +42,7 @@ class EventTest {
 	void testDescriptionPeriodique() {
 		Event periodique = new EvenementPeriodique(
 				new TitreEvenement("Sport"),
-				new ProprietaireEvenement("Charlie"),
+				new Utilisateur("Charlie"),
 				LocalDateTime.of(2026, 3, 26, 18, 0),
 				60,
 				7

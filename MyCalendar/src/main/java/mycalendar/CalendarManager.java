@@ -11,7 +11,7 @@ public class CalendarManager {
 		this.events = new ArrayList<>();
 	}
 
-	public void ajouterEvent(String type, TitreEvenement title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
+	public void ajouterEvent(String type, TitreEvenement title, Utilisateur proprietaire, LocalDateTime dateDebut, int dureeMinutes,
 	                         String lieu, String participants, int frequenceJours) {
 		switch (type) {
 			case "RDV_PERSONNEL" -> events.add(new RdvPersonnel(title, proprietaire, dateDebut, dureeMinutes));
