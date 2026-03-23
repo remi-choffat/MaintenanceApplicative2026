@@ -3,10 +3,10 @@ package mycalendar;
 import java.time.LocalDateTime;
 
 public class Reunion extends Event {
-	public String lieu;
+	public LieuEvenement lieu;
 	public String participants;
 
-	public Reunion(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, String lieu, String participants) {
+	public Reunion(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, LieuEvenement lieu, String participants) {
 		super(title, proprietaire, dateDebut, dureeMinutes);
 		this.lieu = lieu;
 		this.participants = participants;
