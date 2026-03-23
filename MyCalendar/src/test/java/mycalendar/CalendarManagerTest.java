@@ -45,4 +45,23 @@ class CalendarManagerTest {
 		manager.supprimerEvent(id);
 		assertEquals(0, manager.events.size(), "L'événement devrait avoir été supprimé");
 	}
+
+	@Test
+	@DisplayName("Test de génération automatique d'ID unique pour les événements")
+	void testGenerationAutomatiqueIdUnique() {
+		CalendarManager manager = new CalendarManager();
+
+		// On ajoute deux événements sans préciser d'ID
+		manager.ajouterEvent("RDV_PERSONNEL", "Rdv 1", "Alice",
+				LocalDateTime.of(2026, 3, 24, 10, 0), 30, "", "", 0);
+		manager.ajouterEvent("RDV_PERSONNEL", "Rdv 2", "Alice",
+				LocalDateTime.of(2026, 3, 24, 11, 0), 30, "", "", 0);
+
+		Event e1 = manager.events.get(0);
+		Event e2 = manager.events.get(1);
+
+		assertNotNull(e1.id);
+		assertNotNull(e2.id);
+		assertNotEquals(e1.id, e2.id, "Chaque événement doit avoir un ID unique");
+	}
 }
