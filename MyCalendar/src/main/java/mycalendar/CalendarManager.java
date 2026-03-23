@@ -3,6 +3,7 @@ package mycalendar;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CalendarManager {
 	public List<Event> events;
@@ -11,16 +12,19 @@ public class CalendarManager {
 		this.events = new ArrayList<>();
 	}
 
-	public void ajouterEvent(String type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes,
-	                         LieuEvenement lieu, ParticipantsReunion participants, FrequenceEvenement frequenceJours) {
-		// Génération automatique de l'ID métier
-		EventId id = EventId.generer();
-		switch (type) {
-			case "RDV_PERSONNEL" -> events.add(new RdvPersonnel(id, title, proprietaire, dateDebut, dureeMinutes));
-			case "REUNION" -> events.add(new Reunion(id, title, proprietaire, dateDebut, dureeMinutes, lieu, participants));
-			case "PERIODIQUE" ->
-					events.add(new EvenementPeriodique(id, title, proprietaire, dateDebut, dureeMinutes, frequenceJours));
-		}
+	public void ajouterEvent(EventType type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement duree,
+	                         LieuEvenement lieu, ParticipantsReunion participants, FrequenceEvenement frequence) {
+		Event nouvelEvent = type.creer(
+				EventId.generer(),
+				title,
+				proprietaire,
+				dateDebut,
+				duree,
+				lieu,
+				participants,
+				frequence
+		);
+		events.add(nouvelEvent);
 	}
 
 	public List<Event> eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {

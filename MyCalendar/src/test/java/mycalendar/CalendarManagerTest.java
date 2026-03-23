@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
+import static mycalendar.EventType.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalendarManagerTest {
@@ -51,11 +52,11 @@ class CalendarManagerTest {
 	void testGenerationAutomatiqueIdUnique() {
 		CalendarManager manager = new CalendarManager();
 
-		manager.ajouterEvent("RDV_PERSONNEL", new TitreEvenement("Réunion A"), new Utilisateur("Alice"),
+		manager.ajouterEvent(RDV_PERSONNEL, new TitreEvenement("Réunion A"), new Utilisateur("Alice"),
 				new DateDebut(LocalDateTime.of(2026, 3, 24, 10, 0)), new DureeEvenement(60),
 				LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, new FrequenceEvenement(0));
 
-		manager.ajouterEvent("RDV_PERSONNEL", new TitreEvenement("Réunion B"), new Utilisateur("Bob"),
+		manager.ajouterEvent(RDV_PERSONNEL, new TitreEvenement("Réunion B"), new Utilisateur("Bob"),
 				new DateDebut(LocalDateTime.of(2026, 3, 24, 11, 0)), new DureeEvenement(60),
 				LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, new FrequenceEvenement(0));
 

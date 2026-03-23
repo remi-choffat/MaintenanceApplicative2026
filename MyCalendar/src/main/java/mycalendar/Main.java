@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static mycalendar.EventType.*;
+
 public class Main {
     public static void main(String[] args) {
         CalendarManager calendar = new CalendarManager();
@@ -176,7 +178,7 @@ public class Main {
                         System.out.print("Durée (en minutes) : ");
                         DureeEvenement duree = new DureeEvenement(Integer.parseInt(scanner.nextLine()));
 
-                        calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
+                        calendar.ajouterEvent(RDV_PERSONNEL, titre, utilisateur,
                                 new DateDebut(LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute)), duree,
                                 LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, new FrequenceEvenement(0));
 
@@ -213,7 +215,7 @@ public class Main {
                             System.out.println("Ajouter un participant ? (oui / non)");
                         }
 
-                        calendar.ajouterEvent("REUNION", titre2, utilisateur,
+                        calendar.ajouterEvent(REUNION, titre2, utilisateur,
                                 new DateDebut(LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2)), duree2,
                                 lieu, participants, new FrequenceEvenement(0));
 
@@ -237,7 +239,7 @@ public class Main {
                         System.out.print("Frequence (en jours) : ");
                         FrequenceEvenement frequence = new FrequenceEvenement(Integer.parseInt(scanner.nextLine()));
 
-                        calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur,
+                        calendar.ajouterEvent(PERIODIQUE, titre3, utilisateur,
                                 new DateDebut(LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3)), DureeEvenement.EMPTY,
                                 LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, frequence);
 
