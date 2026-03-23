@@ -12,7 +12,7 @@ public class CalendarManager {
 	}
 
 	public void ajouterEvent(String type, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes,
-	                         String lieu, String participants, int frequenceJours) {
+	                         String lieu, String participants, FrequenceEvenement frequenceJours) {
 		switch (type) {
 			case "RDV_PERSONNEL" -> events.add(new RdvPersonnel(title, proprietaire, dateDebut, dureeMinutes));
 			case "REUNION" -> events.add(new Reunion(title, proprietaire, dateDebut, dureeMinutes, lieu, participants));

@@ -3,16 +3,16 @@ package mycalendar;
 import java.time.LocalDateTime;
 
 public class EvenementPeriodique extends Event {
-	public int frequenceJours;
+	public FrequenceEvenement frequence;
 
-	public EvenementPeriodique(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, int frequenceJours) {
+	public EvenementPeriodique(TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, FrequenceEvenement frequence) {
 		super(title, proprietaire, dateDebut, dureeMinutes);
-		this.frequenceJours = frequenceJours;
+		this.frequence = frequence;
 	}
 
 	@Override
 	public String description() {
-		return "Événement périodique : " + title + " tous les " + frequenceJours + " jours";
+		return "Événement périodique : " + title + " tous les " + frequence + " jours";
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class EvenementPeriodique extends Event {
 			if (!temp.isBefore(debut)) {
 				return true;
 			}
-			temp = temp.plusDays(frequenceJours);
+			temp = temp.plusDays(frequence.jours());
 		}
 		return false;
 	}
