@@ -18,8 +18,8 @@ public class Reunion extends Event {
 	}
 
 	@Override
-	public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-		return !dateDebut.valeur().isBefore(debut) && !dateDebut.valeur().isAfter(fin);
+	public boolean estDansPeriode(Periode periode) {
+		return periode.contient(this.dateDebut);
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public abstract class Event {
 
 	public abstract String description();
 
-	public abstract boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin);
+	public abstract boolean estDansPeriode(Periode periode);
 
 	public abstract boolean estEnConflitAvec(Event autre);
 }

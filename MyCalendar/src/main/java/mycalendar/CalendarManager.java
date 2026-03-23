@@ -27,10 +27,10 @@ public class CalendarManager {
 		events.add(nouvelEvent);
 	}
 
-	public List<Event> eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+	public List<Event> eventsDansPeriode(Periode periode) {
 		List<Event> result = new ArrayList<>();
 		for (Event e : events) {
-			if (e.estDansPeriode(debut, fin)) {
+			if (e.estDansPeriode(periode)) {
 				result.add(e);
 			}
 		}

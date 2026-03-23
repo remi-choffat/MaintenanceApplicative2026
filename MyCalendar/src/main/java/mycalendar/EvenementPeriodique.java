@@ -16,10 +16,10 @@ public class EvenementPeriodique extends Event {
 	}
 
 	@Override
-	public boolean estDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+	public boolean estDansPeriode(Periode periode) {
 		LocalDateTime temp = dateDebut.valeur();
-		while (temp.isBefore(fin)) {
-			if (!temp.isBefore(debut)) {
+		while (temp.isBefore(periode.fin())) {
+			if (!temp.isBefore(periode.debut())) {
 				return true;
 			}
 			temp = temp.plusDays(frequence.jours());
