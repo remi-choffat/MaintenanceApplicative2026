@@ -46,13 +46,13 @@ public class Main {
                         System.out.print("Nom d'utilisateur: ");
                         utilisateur = new Utilisateur(scanner.nextLine());
 
-                        if (utilisateur.equals("Roger")) {
+                        if (utilisateur.nom().equals("Roger")) {
                             String motDePasse = scanner.nextLine();
                             if (!motDePasse.equals("Chat")) {
                                 utilisateur = null;
                             }
                         } else {
-                            if (utilisateur.equals("Pierre")) {
+                            if (utilisateur.nom().equals("Pierre")) {
                                 String motDePasse = scanner.nextLine();
                                 if (!motDePasse.equals("KiRouhl")) {
                                     utilisateur = null;
@@ -163,23 +163,12 @@ public class Main {
 
                     case "2":
                         // Ajout simplifié d'un RDV personnel
-                        System.out.print("Titre de l'événement : ");
-                        TitreEvenement titre = new TitreEvenement(scanner.nextLine());
-                        System.out.print("Année (AAAA) : ");
-                        int annee = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Mois (1-12) : ");
-                        int moisRdv = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Jour (1-31) : ");
-                        int jourRdv = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Heure début (0-23) : ");
-                        int heure = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Minute début (0-59) : ");
-                        int minute = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Durée (en minutes) : ");
-                        DureeEvenement duree = new DureeEvenement(Integer.parseInt(scanner.nextLine()));
+                        TitreEvenement titre = InputHelper.lireTitre(scanner);
+                        DateDebut dateDebut = InputHelper.lireDate(scanner);
+                        DureeEvenement duree = InputHelper.lireDuree(scanner);
 
                         calendar.ajouterEvent(RDV_PERSONNEL, titre, utilisateur,
-                                new DateDebut(LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute)), duree,
+                                dateDebut, duree,
                                 LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, new FrequenceEvenement(0));
 
                         System.out.println("Événement ajouté.");
@@ -187,26 +176,13 @@ public class Main {
 
                     case "3":
                         // Ajout simplifié d'une réunion
-                        System.out.print("Titre de l'événement : ");
-                        TitreEvenement titre2 = new TitreEvenement(scanner.nextLine());
-                        System.out.print("Année (AAAA) : ");
-                        int annee2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Mois (1-12) : ");
-                        int moisRdv2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Jour (1-31) : ");
-                        int jourRdv2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Heure début (0-23) : ");
-                        int heure2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Minute début (0-59) : ");
-                        int minute2 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Durée (en minutes) : ");
-                        DureeEvenement duree2 = new DureeEvenement(Integer.parseInt(scanner.nextLine()));
-                        System.out.println("Lieu :");
-                        LieuEvenement lieu = new LieuEvenement(scanner.nextLine());
+                        TitreEvenement titre2 = InputHelper.lireTitre(scanner);
+                        DateDebut dateDebut2 = InputHelper.lireDate(scanner);
+                        DureeEvenement duree2 = InputHelper.lireDuree(scanner);
+                        LieuEvenement lieu = InputHelper.lireLieu(scanner);
 
                         ParticipantsReunion participants = new ParticipantsReunion(List.of(utilisateur));
                         
-                        boolean encore = true;
                         System.out.println("Ajouter un participant ? (oui / non)");
                         while (scanner.nextLine().equals("oui"))
                         {
@@ -216,7 +192,7 @@ public class Main {
                         }
 
                         calendar.ajouterEvent(REUNION, titre2, utilisateur,
-                                new DateDebut(LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2)), duree2,
+                                dateDebut2, duree2,
                                 lieu, participants, new FrequenceEvenement(0));
 
                         System.out.println("Événement ajouté.");
@@ -224,23 +200,12 @@ public class Main {
 
                         case "4":
                         // Ajout simplifié d'une réunion
-                        System.out.print("Titre de l'événement : ");
-                        TitreEvenement titre3 = new TitreEvenement(scanner.nextLine());
-                        System.out.print("Année (AAAA) : ");
-                        int annee3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Mois (1-12) : ");
-                        int moisRdv3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Jour (1-31) : ");
-                        int jourRdv3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Heure début (0-23) : ");
-                        int heure3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Minute début (0-59) : ");
-                        int minute3 = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Frequence (en jours) : ");
-                        FrequenceEvenement frequence = new FrequenceEvenement(Integer.parseInt(scanner.nextLine()));
+                        TitreEvenement titre3 = InputHelper.lireTitre(scanner);
+                        DateDebut dateDebut3 = InputHelper.lireDate(scanner);
+                        FrequenceEvenement frequence = InputHelper.lireFrequence(scanner);
 
                         calendar.ajouterEvent(PERIODIQUE, titre3, utilisateur,
-                                new DateDebut(LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3)), DureeEvenement.EMPTY,
+                                dateDebut3, DureeEvenement.EMPTY,
                                 LieuEvenement.NON_RENSEIGNE, ParticipantsReunion.AUCUN, frequence);
 
                         System.out.println("Événement ajouté.");
