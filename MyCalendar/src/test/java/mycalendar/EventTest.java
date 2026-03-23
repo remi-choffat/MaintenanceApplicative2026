@@ -16,7 +16,7 @@ class EventTest {
 				new TitreEvenement("Dentiste"),
 				new Utilisateur("Alice"),
 				LocalDateTime.of(2026, 3, 24, 10, 0),
-				30
+				new DureeEvenement(30)
 		);
 
 		assertEquals("RDV : Dentiste à 2026-03-24T10:00", rdv.description());
@@ -29,7 +29,7 @@ class EventTest {
 				new TitreEvenement("Point Projet"),
 				new Utilisateur("Bob"),
 				LocalDateTime.of(2026, 3, 25, 14, 0),
-				60,
+				new DureeEvenement(60),
 				"Salle A",
 				"Alice, Charlie"
 		);
@@ -44,7 +44,7 @@ class EventTest {
 				new TitreEvenement("Sport"),
 				new Utilisateur("Charlie"),
 				LocalDateTime.of(2026, 3, 26, 18, 0),
-				60,
+				new DureeEvenement(60),
 				7
 		);
 
