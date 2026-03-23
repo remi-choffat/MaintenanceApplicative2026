@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,7 +32,10 @@ class EventTest {
 				new DateDebut(LocalDateTime.of(2026, 3, 25, 14, 0)),
 				new DureeEvenement(60),
 				new LieuEvenement("Salle A"),
-				"Alice, Charlie"
+				new ParticipantsReunion(List.of(
+						new Utilisateur("Alice"),
+						new Utilisateur("Charlie")
+				))
 		);
 
 		assertEquals("Réunion : Point Projet à Salle A avec Alice, Charlie", reunion.description());
