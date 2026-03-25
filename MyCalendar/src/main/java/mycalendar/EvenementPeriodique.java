@@ -7,7 +7,7 @@ import java.util.stream.Stream;
  * Hérite des propriétés de base de Event.
  */
 public class EvenementPeriodique extends Event {
-	public FrequenceEvenement frequence;
+	FrequenceEvenement frequence;
 
 	public EvenementPeriodique(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, FrequenceEvenement frequence) {
 		super(id, title, proprietaire, dateDebut, dureeMinutes);

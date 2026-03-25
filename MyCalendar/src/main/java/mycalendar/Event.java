@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
  * que tous les types d'événements spécifiques doivent implémenter.
  */
 public abstract class Event {
-	public final EventId id;
-	public TitreEvenement title;
-	public Utilisateur proprietaire;
-	public DateDebut dateDebut;
-	public DureeEvenement duree;
+	final EventId id;
+	TitreEvenement title;
+	Utilisateur proprietaire;
+	DateDebut dateDebut;
+	DureeEvenement duree;
 
 	public Event(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement duree) {
 		this.id = id;

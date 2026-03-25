@@ -5,7 +5,7 @@ package mycalendar;
  * Hérite des propriétés de base de Event.
  */
 public class Webinaire extends Event {
-	public LieuEvenement lien;
+	LieuEvenement lien;
 
 	public Webinaire(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement duree, LieuEvenement lien) {
 		super(id, title, proprietaire, dateDebut, duree);

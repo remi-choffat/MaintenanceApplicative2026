@@ -5,8 +5,8 @@ package mycalendar;
  * Hérite des propriétés de base de Event.
  */
 public class Reunion extends Event {
-	public LieuEvenement lieu;
-	public ParticipantsReunion participants;
+	LieuEvenement lieu;
+	ParticipantsReunion participants;
 
 	public Reunion(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes, LieuEvenement lieu, ParticipantsReunion participants) {
 		super(id, title, proprietaire, dateDebut, dureeMinutes);
