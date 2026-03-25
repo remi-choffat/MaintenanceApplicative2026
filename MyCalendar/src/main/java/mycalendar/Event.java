@@ -1,5 +1,8 @@
 package mycalendar;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.time.LocalDateTime;
 
 /**
@@ -7,8 +10,15 @@ import java.time.LocalDateTime;
  * Cette classe définit les propriétés communes et les méthodes
  * que tous les types d'événements spécifiques doivent implémenter.
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+		@JsonSubTypes.Type(value = RdvPersonnel.class, name = "RDV_PERSONNEL"),
+		@JsonSubTypes.Type(value = Reunion.class, name = "REUNION"),
+		@JsonSubTypes.Type(value = EvenementPeriodique.class, name = "PERIODIQUE"),
+		@JsonSubTypes.Type(value = Webinaire.class, name = "WEBINAIRE")
+})
 public abstract class Event {
-	final EventId id;
+	EventId id;
 	TitreEvenement title;
 	Utilisateur proprietaire;
 	DateDebut dateDebut;
@@ -21,6 +31,8 @@ public abstract class Event {
 		this.dateDebut = dateDebut;
 		this.duree = duree;
 	}
+
+	protected Event() {}
 
 	/**
 	 * Calcule la date et l'heure de fin de l'événement en fonction de son début et de sa durée.

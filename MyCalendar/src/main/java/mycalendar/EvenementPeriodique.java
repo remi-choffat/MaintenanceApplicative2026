@@ -14,6 +14,8 @@ public class EvenementPeriodique extends Event {
 		this.frequence = frequence;
 	}
 
+	protected EvenementPeriodique() { super(); }
+
 	@Override
 	public String description() {
 		return "Événement périodique : " + title + " tous les " + frequence + " jours";

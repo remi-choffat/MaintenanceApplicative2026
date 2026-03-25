@@ -17,6 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		CalendarManager calendar = new CalendarManager();
 		UtilisateurService auth = new UtilisateurService();
+		JsonStorageService storage = new JsonStorageService();
 		Scanner scanner = new Scanner(System.in);
 
 		// Commandes du menu (utilisateur non connecté)
@@ -28,7 +29,10 @@ public class Main {
 			auth.connecter(u, scanner.nextLine()).ifPresentOrElse(
 					user -> {
 						utilisateurConnecte = user;
-						System.out.println("✅ Connexion réussie !");
+						// Chargement de la sauvegarde utilisateur
+						calendar.events.clear();
+						calendar.events.addAll(storage.charger(utilisateurConnecte));
+						System.out.println("✅ Connexion réussie ! ");
 					},
 					() -> System.out.println("❌ Échec de la connexion.")
 			);
@@ -73,14 +77,20 @@ public class Main {
 			System.out.println("✅ Webinaire ajouté.");
 		});
 		menuPrincipal.put("6", () -> {
+			storage.sauvegarder(utilisateurConnecte, calendar.events);
+		});
+		menuPrincipal.put("7", () -> {
+			// Sauvegarde automatique
+			storage.sauvegarder(utilisateurConnecte, calendar.events);
+			calendar.events.clear();
 			utilisateurConnecte = null;
-			System.out.println("👋 Déconnexion réussie.");
+			System.out.println("👋 Déconnexion réussie");
 		});
 
 		// Gestion de l'état (connexion)
 		Map<Boolean, Runnable> controleurEtat = new HashMap<>();
 		controleurEtat.put(true, () -> { // Utilisateur connecté
-			System.out.println("\n1. Voir le planning | 2. Ajouter RDV | 3. Ajouter Réunion | 4. Ajouter Périodique | 5. Ajouter Webinaire | 6. Se déconnecter");
+			System.out.println("\n1. Voir le planning | 2. Ajouter RDV | 3. Ajouter Réunion | 4. Ajouter Périodique | 5. Ajouter Webinaire | 6. Sauvegarder | 7. Se déconnecter");
 			String choix = scanner.nextLine();
 			menuPrincipal.getOrDefault(choix, () -> System.out.println("❌ Choix invalide.")).run();
 		});

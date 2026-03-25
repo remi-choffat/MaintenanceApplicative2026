@@ -12,6 +12,8 @@ public class Webinaire extends Event {
 		this.lien = lien;
 	}
 
+	protected Webinaire() { super(); }
+
 	@Override
 	public String description() {
 		return "Webinaire : " + title + " en ligne sur " + lien;

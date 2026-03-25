@@ -9,6 +9,8 @@ public class RdvPersonnel extends Event {
 		super(id, title, proprietaire, dateDebut, dureeMinutes);
 	}
 
+	protected RdvPersonnel() { super(); }
+
 	@Override
 	public String description() {
 		return "RDV : " + title + " le " + dateDebut.toString();
