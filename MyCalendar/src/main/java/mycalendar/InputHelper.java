@@ -1,6 +1,8 @@
 package mycalendar;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputHelper {
@@ -26,20 +28,27 @@ public class InputHelper {
 
 	public static DureeEvenement lireDuree(Scanner sc) {
 		System.out.print("Durée (en minutes) : ");
-		int d = Integer.parseInt(sc.nextLine());
-		return new DureeEvenement(d);
+		return new DureeEvenement(Integer.parseInt(sc.nextLine()));
 	}
 
 	public static LieuEvenement lireLieu(Scanner sc) {
 		System.out.print("Lieu : ");
-		String l = sc.nextLine();
-		return new LieuEvenement(l);
+		return new LieuEvenement(sc.nextLine());
 	}
 
 	public static FrequenceEvenement lireFrequence(Scanner sc) {
 		System.out.print("Frequence (en minutes) : ");
-		int d = Integer.parseInt(sc.nextLine());
-		return new FrequenceEvenement(d);
+		return new FrequenceEvenement(Integer.parseInt(sc.nextLine()));
+	}
+
+	public static ParticipantsReunion lireParticipants(Scanner sc) {
+		System.out.print("Participants (séparés par des virgules) : ");
+		List<Utilisateur> liste = Arrays.stream(sc.nextLine().split(","))
+				.map(String::trim)
+				.filter(s -> !s.isEmpty())
+				.map(Utilisateur::new)
+				.toList();
+		return new ParticipantsReunion(liste);
 	}
 
 }
