@@ -86,4 +86,26 @@ class CalendarManagerTest {
 
 		assertEquals(1, resultats.size(), "L'événement devrait être trouvé dans la période");
 	}
+
+	@Test
+	@DisplayName("Test d'ajout d'un nouveau type d'événement : Webinaire")
+	void testAjoutNouveauTypeWebinaire() {
+		CalendarManager manager = new CalendarManager();
+
+		manager.ajouterEvent(
+				EventType.WEBINAIRE,
+				new TitreEvenement("Présentation TDD"),
+				new Utilisateur("Alice"),
+				new DateDebut(LocalDateTime.of(2026, 3, 25, 10, 0)),
+				new DureeEvenement(45),
+				new LieuEvenement("https://meet.google.com/abc"),
+				null,
+				null
+		);
+
+		assertEquals(1, manager.events.size(), "Le webinaire doit être ajouté");
+		assertEquals("Webinaire : Présentation TDD en ligne sur https://meet.google.com/abc",
+				manager.events.getFirst().description(),
+				"La description du webinaire doit être correcte");
+	}
 }
