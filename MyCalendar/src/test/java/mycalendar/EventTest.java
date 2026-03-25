@@ -21,7 +21,7 @@ class EventTest {
 				new DureeEvenement(30)
 		);
 
-		assertEquals("RDV : Dentiste à 2026-03-24T10:00", rdv.description());
+		assertEquals("RDV : Dentiste le mardi 24 mars 2026 à 10:00", rdv.description());
 	}
 
 	@Test
