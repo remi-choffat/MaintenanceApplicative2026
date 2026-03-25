@@ -108,4 +108,26 @@ class CalendarManagerTest {
 				manager.events.getFirst().description(),
 				"La description du webinaire doit être correcte");
 	}
+
+	@Test
+	@DisplayName("Test de conflit entre un événement périodique et un rendez-vous simple")
+	void testConflitEvenementPeriodique() {
+		CalendarManager manager = new CalendarManager();
+
+		// Événement périodique : Tous les 7 jours à partir du 1er mars 10h00 (durée 60 min)
+		Event periodique = EventType.PERIODIQUE.creer(
+				EventId.generer(), new TitreEvenement("Sport"), new Utilisateur("Alice"),
+				new DateDebut(LocalDateTime.of(2026, 3, 1, 10, 0)), new DureeEvenement(60),
+				null, null, new FrequenceEvenement(7)
+		);
+
+		// RDV simple : Le 15 mars à 10h30 (durée 30 min)
+		Event rdv = EventType.RDV_PERSONNEL.creer(
+				EventId.generer(), new TitreEvenement("Dentiste"), new Utilisateur("Alice"),
+				new DateDebut(LocalDateTime.of(2026, 3, 15, 10, 30)), new DureeEvenement(30),
+				null, null, null
+		);
+
+		assertTrue(manager.conflit(periodique, rdv), "Un conflit doit être détecté sur l'occurrence du 15 mars");
+	}
 }
