@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe utilitaire gérant les interactions avec l'utilisateur via la console.
+ * Son rôle principal est de lire les entrées primitives (String, int)
+ * et de les convertir immédiatement en Value Objects pour le domaine métier.
+ */
 public class InputHelper {
 
 	public static TitreEvenement lireTitre(Scanner sc) {

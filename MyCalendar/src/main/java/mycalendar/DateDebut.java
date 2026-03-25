@@ -5,12 +5,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 /**
- * Value Object pour la date de début.
+ * Value Object représentant la date et l'heure de début d'un événement.
+ *
+ * @param valeur L'objet LocalDateTime encapsulé.
  */
 public record DateDebut(LocalDateTime valeur) {
-
-	public final static DateDebut NOW = new DateDebut(LocalDateTime.now());
-
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy 'à' HH:mm", Locale.FRANCE);
 
 	@Override

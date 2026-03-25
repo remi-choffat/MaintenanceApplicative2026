@@ -1,5 +1,9 @@
 package mycalendar;
 
+/**
+ * Représente un événement spécifique de type réunion.
+ * Hérite des propriétés de base de Event.
+ */
 public class Reunion extends Event {
 	public LieuEvenement lieu;
 	public ParticipantsReunion participants;

@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Point d'entrée de l'application MyCalendar.
+ * Implémente une interface console interactive basée sur le pattern Command
+ * pour interagir avec le gestionnaire de calendrier sans utiliser de conditionnels.
+ */
 public class Main {
 
 	private static Utilisateur utilisateurConnecte = null;

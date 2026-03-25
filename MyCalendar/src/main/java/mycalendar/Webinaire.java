@@ -1,5 +1,9 @@
 package mycalendar;
 
+/**
+ * Représente un événement spécifique de type webinaire.
+ * Hérite des propriétés de base de Event.
+ */
 public class Webinaire extends Event {
 	public LieuEvenement lien;
 

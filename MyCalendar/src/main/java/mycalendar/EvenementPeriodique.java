@@ -2,6 +2,10 @@ package mycalendar;
 
 import java.util.stream.Stream;
 
+/**
+ * Représente un événement spécifique de type périodique.
+ * Hérite des propriétés de base de Event.
+ */
 public class EvenementPeriodique extends Event {
 	public FrequenceEvenement frequence;
 

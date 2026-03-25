@@ -1,5 +1,9 @@
 package mycalendar;
 
+/**
+ * Représente un événement spécifique de type rendez-vous.
+ * Hérite des propriétés de base de Event.
+ */
 public class RdvPersonnel extends Event {
 	public RdvPersonnel(EventId id, TitreEvenement title, Utilisateur proprietaire, DateDebut dateDebut, DureeEvenement dureeMinutes) {
 		super(id, title, proprietaire, dateDebut, dureeMinutes);
