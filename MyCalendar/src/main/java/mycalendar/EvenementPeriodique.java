@@ -1,6 +1,7 @@
 package mycalendar;
 
 import java.time.LocalDateTime;
+import java.util.stream.Stream;
 
 public class EvenementPeriodique extends Event {
 	public FrequenceEvenement frequence;
@@ -29,6 +30,10 @@ public class EvenementPeriodique extends Event {
 
 	@Override
 	public boolean estEnConflitAvec(Event autre) {
-		return false;
+		return Stream.iterate(this.dateDebut.valeur(), d -> d.isBefore(autre.calculerFin()), d -> d.plusDays(this.frequence.jours()))
+				.anyMatch(d ->
+						d.isBefore(autre.calculerFin()) &&
+								autre.dateDebut.valeur().isBefore(d.plusMinutes(this.duree.minutes()))
+				);
 	}
 }
