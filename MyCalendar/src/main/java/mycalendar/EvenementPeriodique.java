@@ -1,6 +1,5 @@
 package mycalendar;
 
-import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 public class EvenementPeriodique extends Event {
@@ -18,14 +17,8 @@ public class EvenementPeriodique extends Event {
 
 	@Override
 	public boolean estDansPeriode(Periode periode) {
-		LocalDateTime temp = dateDebut.valeur();
-		while (temp.isBefore(periode.fin())) {
-			if (!temp.isBefore(periode.debut())) {
-				return true;
-			}
-			temp = temp.plusDays(frequence.jours());
-		}
-		return false;
+		return Stream.iterate(this.dateDebut.valeur(), d -> !d.isAfter(periode.fin()), d -> d.plusDays(this.frequence.jours()))
+				.anyMatch(d -> !d.isBefore(periode.debut()));
 	}
 
 	@Override

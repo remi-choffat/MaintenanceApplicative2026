@@ -26,13 +26,9 @@ public class CalendarManager {
 	}
 
 	public List<Event> eventsDansPeriode(Periode periode) {
-		List<Event> result = new ArrayList<>();
-		for (Event e : events) {
-			if (e.estDansPeriode(periode)) {
-				result.add(e);
-			}
-		}
-		return result;
+		return events.stream()
+				.filter(e -> e.estDansPeriode(periode))
+				.toList();
 	}
 
 	public boolean conflit(Event e1, Event e2) {
